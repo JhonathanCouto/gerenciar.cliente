@@ -8,6 +8,10 @@ namespace GestaoCliente.Domain.Validation
 {
     public static class ClienteValidation
     {
+        /// <summary>
+        /// Os metodos presentes nessa classe são as validações do Cliente
+        /// </summary>
+        /// <param name="cliente"></param>
         public static void Validar(this ClienteModel cliente)
         {
             List<string> erros = new List<string>();

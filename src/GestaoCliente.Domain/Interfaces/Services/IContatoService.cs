@@ -9,9 +9,9 @@ namespace GestaoCliente.Domain.Interfaces.Services
     public interface IContatoService
     {
         /// <summary>
-        /// Este método adiciona um novo cliente
+        /// Este método adiciona um novo contato
         /// 
-        /// Para adicionar um novo cliente, é obrigário adicionar os campos, Nome e Data de nascimento
+        /// Para adicionar um novo contato, é obrigário adicionar os campos, Email e telefone
         /// </summary>
         /// <param name="contato"></param>
         void Adicionar(ContatoModel contato);

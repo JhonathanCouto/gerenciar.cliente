@@ -8,6 +8,9 @@ namespace GestaoCliente.Domain
 {
     public class EnderecoModel
     {
+        /// <summary>
+        /// Estes são os campos da entidade Endereço
+        /// </summary>
         public int Id { get; set; }
         public string Logradouro { get; set; }
         public string Numero { get; set; }

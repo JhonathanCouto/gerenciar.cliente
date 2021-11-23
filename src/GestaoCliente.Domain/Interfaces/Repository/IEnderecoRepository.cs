@@ -8,6 +8,10 @@ namespace GestaoCliente.Domain.Interfaces.Repository
 {
     public interface IEnderecoRepository
     {
+        /// <summary>
+        /// Estes são os metodos do Endereço que serão usados na camada Repository
+        /// </summary>
+        /// <param name="endereco"></param>
         void Adicionar(EnderecoModel endereco);
         void Atualizar(EnderecoModel endereco);
         void Excluir(int id);

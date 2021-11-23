@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace GestaoCliente.Infra.Data
 {
+    /// <summary>
+    /// Esta classe é responsavel pela conexão ao banco de dados
+    /// </summary>
     public class ClienteRepository : BaseRepository, IClienteRepository
     {
         public void Adicionar(ClienteModel cliente)

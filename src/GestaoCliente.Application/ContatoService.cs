@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace GestaoCliente.Application
 {
+    /// <summary>
+    /// esta classe é responsavel pelas regras  de negocio do objeto contato
+    /// </summary>
+
     public class ContatoService : IContatoService
     {
         private readonly IContatoRepository _contatoRepository;

@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace GestaoCliente.Application
 {
+    /// <summary>
+    /// esta classe é responsavel pelas regras  de negocio do objeto Cliente
+    /// </summary>
     public class ClienteService : IClienteService
     {
         private readonly IClienteRepository _clienteRepository;
@@ -20,6 +23,14 @@ namespace GestaoCliente.Application
             _clienteRepository = clienteRepository;
         }
 
+        /// <summary>
+        /// Adicionar o cliente no bannco de dados 
+        /// 
+        /// Validar os campos obrigatórios, sendo:
+        /// Nome: Aceito até 30 caracteres
+        /// E-mail
+        /// </summary>
+        /// <param name="cliente"></param>
         public void Adicionar(ClienteModel cliente)
         {
             cliente.Validar();
@@ -33,7 +44,7 @@ namespace GestaoCliente.Application
 
             _clienteRepository.Atualizar(cliente);
         }
-         
+
         public void Excluir(int id)
         {
             _clienteRepository.Excluir(id);

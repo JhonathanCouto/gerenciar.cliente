@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace GestaoCliente.Application
 {
+    /// <summary>
+    /// esta classe é responsavel pelas regras  de negocio do objeto Endereço
+    /// </summary>
     public class EnderecoService : IEnderecoService
     {
         private readonly IEnderecoRepository _enderecoRepository;

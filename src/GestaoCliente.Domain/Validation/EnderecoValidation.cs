@@ -8,6 +8,10 @@ namespace GestaoCliente.Domain.Validation
 {
     public static class EnderecoValidation
     {
+        /// <summary>
+        /// Os metodos desta classe são validações do Endereço
+        /// </summary>
+        /// <param name="endereco"></param>
         public static void Validar(this EnderecoModel endereco)
         {
             List<string> erros = new List<string>();

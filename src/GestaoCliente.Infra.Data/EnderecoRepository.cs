@@ -11,8 +11,15 @@ using System.Threading.Tasks;
 
 namespace GestaoCliente.Infra.Data
 {
+    /// <summary>
+    /// esta classe é responsavel pela conexão ao banco de dados
+    /// </summary>
     public class EnderecoRepository : BaseRepository, IEnderecoRepository
     {
+        /// <summary>
+        /// Adicionar o endereço no banco de dados
+        /// </summary>
+        /// <param name="endereco"></param>
         public void Adicionar(EnderecoModel endereco)
         {
             string sql = @"Insert into Endereco (
@@ -34,6 +41,10 @@ namespace GestaoCliente.Infra.Data
             base.AdicionarOuAtualizar(sql, endereco);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="endereco"></param>
         public void Atualizar(EnderecoModel endereco)
         {
             string sql = @"Update Endereco set
