@@ -47,6 +47,11 @@ namespace GestaoCliente.Application
 
         public void Excluir(int id)
         {
+            ClienteModel cliente = Obter(new ClienteModel { Id = id });
+            if (cliente == null)
+            {
+                throw new Exception("Nenhum cliente encontrado.");
+            }
             _clienteRepository.Excluir(id);
         }
 

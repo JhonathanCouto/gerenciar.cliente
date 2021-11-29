@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoCliente.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoCliente.WebAPI", "src\GestaoCliente.WebAPI\GestaoCliente.WebAPI.csproj", "{FCA6173C-775A-45FA-B691-000D5524E8CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoCliente.API", "src\GestaoCliente.API\GestaoCliente.API.csproj", "{3AEDF4DD-E872-4062-AB99-69359F8CFD53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{FCA6173C-775A-45FA-B691-000D5524E8CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCA6173C-775A-45FA-B691-000D5524E8CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCA6173C-775A-45FA-B691-000D5524E8CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AEDF4DD-E872-4062-AB99-69359F8CFD53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AEDF4DD-E872-4062-AB99-69359F8CFD53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AEDF4DD-E872-4062-AB99-69359F8CFD53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AEDF4DD-E872-4062-AB99-69359F8CFD53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{CE1344A7-A5BD-4CB0-9604-5CE9937ACD96} = {46C4E95A-74AB-4F4C-99C3-4E9C1E7B2647}
 		{7E4DC5F8-0324-42CB-BA26-7F4BF813909E} = {D96C8155-1550-4B68-B2CB-34E964A13432}
 		{FCA6173C-775A-45FA-B691-000D5524E8CE} = {DA6FF447-47DD-43A7-80CB-72E5E6337176}
+		{3AEDF4DD-E872-4062-AB99-69359F8CFD53} = {DA6FF447-47DD-43A7-80CB-72E5E6337176}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {80E5D258-86B9-476D-988B-E43885C48761}
