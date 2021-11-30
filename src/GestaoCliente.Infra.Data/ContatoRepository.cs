@@ -21,10 +21,12 @@ namespace GestaoCliente.Infra.Data
 
             string sql = @"Insert into Contato (
                                     Telefone,
-                                    Email
+                                    Email,
+                                    ClienteId
                                 ) values (
                                     @Telefone,
-                                    @Email
+                                    @Email,
+                                    @ClienteId
                                 );";
             base.AdicionarOuAtualizar(sql, contato);
         }
@@ -54,6 +56,12 @@ namespace GestaoCliente.Infra.Data
         {
             string sql = @"select * from Contato where Id = @Id;";
             return base.Obter<ContatoModel>(sql, contato);
+        }
+
+        public IEnumerable<ContatoModel> ObterPorCliente(ContatoModel contato)
+        {
+            string sql = @"select * from Contato where ClienteId = @ClienteId;";
+            return base.Listar<ContatoModel>(sql, contato);
         }
 
     }

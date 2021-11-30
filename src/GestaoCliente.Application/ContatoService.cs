@@ -47,6 +47,11 @@ namespace GestaoCliente.Application
             return _contatoRepository.Listar(contato);
         }
 
+        public IEnumerable<ContatoModel> ObterPorCliente(ContatoModel contato)
+        {
+            return _contatoRepository.ObterPorCliente(contato);
+        }
+
         public ContatoModel Obter(ContatoModel contato)
         {
             return _contatoRepository.Obter(contato);

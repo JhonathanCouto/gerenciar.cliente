@@ -45,6 +45,11 @@ namespace GestaoCliente.Application
             return _enderecoRepository.Listar(endereco);
         }
 
+        public IEnumerable<EnderecoModel> ObterPorCliente(EnderecoModel endereco)
+        {
+            return _enderecoRepository.ObterPorCliente(endereco);
+        }
+
         public EnderecoModel Obter(EnderecoModel endereco)
         {
             return _enderecoRepository.Obter(endereco);

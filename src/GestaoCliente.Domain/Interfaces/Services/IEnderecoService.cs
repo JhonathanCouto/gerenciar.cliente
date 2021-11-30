@@ -19,5 +19,6 @@ namespace GestaoCliente.Domain.Interfaces.Services
         void Excluir(int id);
         EnderecoModel Obter(EnderecoModel endereco);
         IEnumerable<EnderecoModel> Listar(EnderecoModel endereco);
+        IEnumerable<EnderecoModel> ObterPorCliente(EnderecoModel endereco);
     }
 }

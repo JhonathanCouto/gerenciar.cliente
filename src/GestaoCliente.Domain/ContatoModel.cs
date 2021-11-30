@@ -12,6 +12,7 @@ namespace GestaoCliente.Domain
         /// Estes são os campos da entidade Contato
         /// </summary>
         public int Id { get; set; }
+        public int ClienteId { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
     }

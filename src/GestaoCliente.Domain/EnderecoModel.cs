@@ -12,6 +12,7 @@ namespace GestaoCliente.Domain
         /// Estes são os campos da entidade Endereço
         /// </summary>
         public int Id { get; set; }
+        public int ClienteId { get; set; }
         public string Logradouro { get; set; }
         public string Numero { get; set; }
         public string Complemento { get; set; }

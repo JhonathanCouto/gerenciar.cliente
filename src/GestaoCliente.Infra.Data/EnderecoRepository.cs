@@ -29,7 +29,8 @@ namespace GestaoCliente.Infra.Data
                                     Cep,
                                     Estado,
                                     Cidade,
-                                    Bairro
+                                    Bairro,
+                                    ClienteId
                                 ) values (
                                     @Logradouro,
                                     @Numero,
@@ -37,7 +38,8 @@ namespace GestaoCliente.Infra.Data
                                     @Cep,
                                     @Estado,
                                     @Cidade,
-                                    @Bairro);";
+                                    @Bairro,
+                                    @ClienteId);";
             base.AdicionarOuAtualizar(sql, endereco);
         }
 
@@ -54,7 +56,8 @@ namespace GestaoCliente.Infra.Data
                                     Cep = @Cep,
                                     Estado = @Estado,
                                     Cidade @Cidade,
-                                    Bairro = @Bairro;";
+                                    Bairro = @Bairro
+                                where Id = @Id;";
             base.AdicionarOuAtualizar(sql, endereco);
         }
 
@@ -67,6 +70,12 @@ namespace GestaoCliente.Infra.Data
         public IEnumerable<EnderecoModel> Listar(EnderecoModel endereco)
         {
             string sql = @"Select * from Endereco;";
+            return base.Listar<EnderecoModel>(sql, endereco);
+        }
+
+        public IEnumerable<EnderecoModel> ObterPorCliente(EnderecoModel endereco)
+        {
+            string sql = @"select * from Endereco where ClienteId = @ClienteId;";
             return base.Listar<EnderecoModel>(sql, endereco);
         }
 

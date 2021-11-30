@@ -1,4 +1,5 @@
 ﻿using GestaoCliente.Domain;
+using GestaoCliente.Domain.Interfaces.Services;
 using GestaoCliente.Domain.Interfaces.Servides;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +16,14 @@ namespace GestaoCliente.API.Controllers
     public class ClienteController : BaseAPIController
     {
         private readonly IClienteService _clienteService;
+        private readonly IContatoService _contatoService;
+        private readonly IEnderecoService _enderecoService;
 
-        public ClienteController(IClienteService clienteService)
+        public ClienteController(IClienteService clienteService, IContatoService contatoService, IEnderecoService enderecoService)
         {
             _clienteService = clienteService;
+            _contatoService = contatoService;
+            _enderecoService = enderecoService;
         }
 
         [HttpPost, Route("cliente")]
@@ -81,6 +86,24 @@ namespace GestaoCliente.API.Controllers
                 Id = id,
             };
             return Sucesso(null, (int)HttpStatusCode.OK, _clienteService.Obter(model));
+        }
+
+        [HttpGet, Route("cliente/{id}/completo")]
+        public dynamic ObterCompleto(int id)
+        {
+            ClienteModel model = new ClienteModel
+            {
+                Id = id,
+            };
+
+            dynamic resultado = new
+            {
+                Cliente = _clienteService.Obter(model),
+                Endereco = _enderecoService.ObterPorCliente(new EnderecoModel { ClienteId = id }),
+                Contato = _contatoService.ObterPorCliente(new ContatoModel { ClienteId = id })
+            };
+
+            return Sucesso(null, (int)HttpStatusCode.OK, resultado);
         }
     }
 }

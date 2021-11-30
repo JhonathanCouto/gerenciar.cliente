@@ -19,7 +19,6 @@ namespace GestaoCliente.Domain.Interfaces.Services
         void Excluir(int id);
         ContatoModel Obter(ContatoModel contato);
         IEnumerable<ContatoModel> Listar(ContatoModel contato);
-
-
+        IEnumerable<ContatoModel> ObterPorCliente(ContatoModel contato);
     }
 }
