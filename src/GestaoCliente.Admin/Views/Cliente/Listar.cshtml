@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "Relatório de clientes";
+}
+
+<div class="card">
+    <div class="card-header">
+        <a asp-controller="cliente" asp-action="criar" class="btn btn-primary" style="float:right;">Novo cliente</a>
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+
+        <form class="row g-3">
+            <div class="col-md-12">
+                <h5>Pesquisar cliente</h5>
+            </div>
+            <div class="col-auto">
+                <input type="search" class="form-control" id="inputPassword2" placeholder="Digite o nome do cliente...">
+            </div>
+            <div class="col-auto">
+                <input type="email" class="form-control" id="inputPassword2" placeholder="Digite o e-mail do cliente...">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-secondary mb-3">Pesquisar</button>
+            </div>
+        </form>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Ações
+                    </th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                    <th scope="col">Handle</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a asp-controller="cliente" asp-action="atualizar" class="btn btn-info mr-1" style="float:right;">Editar</a>
+                        <a asp-controller="cliente" asp-action="delete" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
+                        <a asp-controller="cliente" asp-action="detalhe" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
+                    </td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>Otto</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a asp-controller="cliente" asp-action="atualizar" class="btn btn-info mr-1" style="float:right;">Editar</a>
+                        <a asp-controller="cliente" asp-action="delete" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
+                        <a asp-controller="cliente" asp-action="detalhe" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
+                    </td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>Thornton</td>
+                    <td>Thornton</td>
+                    <td>fat</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a asp-controller="cliente" asp-action="atualizar" class="btn btn-info mr-1" style="float:right;">Editar</a>
+                        <a asp-controller="cliente" asp-action="delete" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
+                        <a asp-controller="cliente" asp-action="detalhe" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
+                    </td>
+                    <td>twitter</td>
+                    <td>twitter</td>
+                    <td>twitter</td>
+                    <td>twitter</td>
+                    <td>twitter</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

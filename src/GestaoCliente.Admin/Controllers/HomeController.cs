@@ -1,6 +1,4 @@
-﻿using GestaoCliente.Domain;
-using GestaoCliente.Domain.Interfaces.Servides;
-using GestaoCliente.WebAPI.Models;
+﻿using GestaoCliente.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,24 +7,20 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GestaoCliente.WebAPI.Controllers
+namespace GestaoCliente.Admin.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IClienteService _clienteService;
 
-        public HomeController(ILogger<HomeController> logger, IClienteService clienteService)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _clienteService = clienteService;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<ClienteModel> clienteModels = _clienteService.Listar(new Domain.ClienteModel { });
-
-            return View(clienteModels);
+            return View();
         }
 
         public IActionResult Privacy()

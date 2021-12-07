@@ -1,6 +1,6 @@
 using System;
 
-namespace GestaoCliente.WebAPI.Models
+namespace GestaoCliente.Admin.Models
 {
     public class ErrorViewModel
     {

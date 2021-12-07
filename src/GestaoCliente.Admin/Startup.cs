@@ -1,4 +1,3 @@
-using GestaoCliente.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GestaoCliente.WebAPI
+namespace GestaoCliente.Admin
 {
     public class Startup
     {
@@ -25,9 +24,6 @@ namespace GestaoCliente.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            // iniciando a injeção de dependencia
-            BootStrapper.RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
