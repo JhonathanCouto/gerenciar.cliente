@@ -1,9 +1,13 @@
-﻿using GestaoCliente.Domain;
+﻿using GestaoCliente.API.Models;
+using GestaoCliente.Domain;
 using GestaoCliente.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -83,6 +87,39 @@ namespace GestaoCliente.API.Controllers
                 Id = id,
             };
             return Sucesso(null, (int)HttpStatusCode.OK, _enderecoService.Obter(model));
+        }
+
+        [HttpGet, Route("endereco/{cep}/pesquisar")]
+        public dynamic Pesquisar(string cep)
+        {
+            cep = string.IsNullOrWhiteSpace(cep) ? cep.Replace("-", "") : cep;
+
+            RestClient client = new RestClient($"https://viacep.com.br/ws/{cep}/json");
+            RestRequest request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            CepModel model = JsonConvert.DeserializeObject<CepModel>(response.Content);
+
+            return Sucesso(null, (int)HttpStatusCode.OK, model);
+        }
+
+        [HttpGet, Route("endereco/{cep}/pesquisar-xml")]
+        public dynamic PesquisarZml(string cep)
+        {
+            cep = string.IsNullOrWhiteSpace(cep) ? cep.Replace("-", "") : cep;
+
+            RestClient client = new RestClient($"https://viacep.com.br/ws/{cep}/xml");
+            RestRequest request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+
+            xmlcep xmlCep = new xmlcep();
+
+            System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(xmlcep));
+            using (StringReader sr = new StringReader(response.Content))
+            {
+                xmlCep = (xmlcep)ser.Deserialize(sr);
+            }
+
+            return Sucesso(null, (int)HttpStatusCode.OK, xmlCep);
         }
     }
 

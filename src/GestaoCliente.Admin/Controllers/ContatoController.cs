@@ -8,7 +8,28 @@ namespace GestaoCliente.Admin.Controllers
 {
     public class ContatoController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Listar()
+        {
+            return View();
+        }
+
+
+        public IActionResult Detalhe()
+        {
+            return View();
+        }
+
+        public IActionResult Criar()
+        {
+            return View();
+        }
+
+        public IActionResult Atualizar()
+        {
+            return View();
+        }
+
+        public IActionResult Delete()
         {
             return View();
         }
