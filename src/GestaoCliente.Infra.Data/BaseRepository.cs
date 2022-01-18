@@ -12,7 +12,7 @@ namespace GestaoCliente.Infra.Data
     /// <summary>
     /// Esta classe é responsavel pelos codigos base da camada de conexão ao banco de dados
     /// </summary>
-    public abstract class BaseRepository
+    public abstract class BaseRepository 
     {
         private const string stringSQL = "Data Source=.\\SQLEXPRESS;Initial Catalog=DbGestaoCliente;Integrated Security=True;";
 
