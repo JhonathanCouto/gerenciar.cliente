@@ -1,6 +1,9 @@
-﻿
+﻿@inject IHttpContextAccessor httpContextAccessor
+@model IEnumerable<ClienteModel>
+
 @{
     ViewData["Title"] = "Relatório de clientes";
+    HttpRequest httpRequest = httpContextAccessor.HttpContext.Request;
 }
 
 <div class="card">
@@ -10,15 +13,15 @@
     </div>
     <div class="card-body">
 
-        <form class="row g-3">
+        <form class="row g-3" method="get" action="@Url.ActionLink("listar", "cliente")">
             <div class="col-md-12">
                 <h5>Pesquisar cliente</h5>
             </div>
             <div class="col-auto">
-                <input type="text" class="form-control" id="inputPassword2" placeholder="Digite o nome do cliente...">
+                <input type="text" class="form-control" id="nome" name="nome" value="@httpRequest.Query["nome"]" placeholder="Digite o nome do cliente...">
             </div>
-            <div class="col-auto">
-                <input type="email" class="form-control" id="inputPassword2" placeholder="Digite o e-mail do cliente...">
+            <div class="col-auto d-none">
+                <input type="email" class="form-control" id="email" name="email" value="@httpRequest.Query["email"]" placeholder="Digite o e-mail do cliente...">
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-secondary mb-3">Pesquisar</button>
@@ -28,53 +31,26 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">
-                        Ações
-                    </th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Ações</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data de nascimento</th>
+                    <th scope="col">Gênero</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <a asp-controller="cliente" asp-action="atualizar" class="btn btn-info mr-1" style="float:right;">Editar</a>
-                        <a asp-controller="cliente" asp-action="delete" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
-                        <a asp-controller="cliente" asp-action="detalhe" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
-                    </td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>mdo</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a asp-controller="cliente" asp-action="atualizar" class="btn btn-info mr-1" style="float:right;">Editar</a>
-                        <a asp-controller="cliente" asp-action="delete" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
-                        <a asp-controller="cliente" asp-action="detalhe" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
-                    </td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>Thornton</td>
-                    <td>Thornton</td>
-                    <td>fat</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a asp-controller="cliente" asp-action="atualizar" class="btn btn-info mr-1" style="float:right;">Editar</a>
-                        <a asp-controller="cliente" asp-action="delete" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
-                        <a asp-controller="cliente" asp-action="detalhe" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
-                    </td>
-                    <td>twitter</td>
-                    <td>twitter</td>
-                    <td>twitter</td>
-                    <td>twitter</td>
-                    <td>twitter</td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Content($"/cliente/atualizar?id={item.Id}")" class="btn btn-info mr-1" style="float:right;">Editar</a>
+                            <a href="@Url.Content($"/cliente/delete?id={item.Id}")" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
+                            <a href="@Url.Content($"/cliente/detalhe?id={item.Id}")" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
+                        </td>
+                        <td>@item.Nome</td>
+                        <td>@item.DataNascimento.ToString("dd/MM/yyyy")</td>
+                        <td>@item.Genero</td>
+                    </tr>
+                }
             </tbody>
         </table>
 

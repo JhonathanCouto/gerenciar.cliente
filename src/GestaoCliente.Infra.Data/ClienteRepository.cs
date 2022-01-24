@@ -48,7 +48,8 @@ namespace GestaoCliente.Infra.Data
 
         public IEnumerable<ClienteModel> Listar(ClienteModel cliente)
         {
-            string sql = @"select * from Cliente;";
+            string sql = @"select * from Cliente 
+                            where (@Nome is null or Nome like '%' + @Nome + '%' collate Latin1_general_CI_AI);";
             return base.Listar<ClienteModel>(sql, cliente);
         }
 

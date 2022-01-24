@@ -57,6 +57,8 @@ namespace GestaoCliente.Application
 
         public IEnumerable<ClienteModel> Listar(ClienteModel cliente)
         {
+            cliente.Nome = string.IsNullOrWhiteSpace(cliente.Nome) ? null : cliente.Nome;
+
             return _clienteRepository.Listar(cliente);
         }
 
