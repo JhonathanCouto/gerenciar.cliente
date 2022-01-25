@@ -1,7 +1,31 @@
-﻿
+﻿@model ContatoModel
 @{
     ViewData["Title"] = "Detalhe";
 }
 
-<h1>Detalhe</h1>
+<div class="card">
+    <div class="card-header">
+        <a asp-controller="contato" asp-action="listar" class="btn btn-warning" style="float:right;">Voltar</a>
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <label>Telefone</label>
+                <input type="text" class="form-control" readonly value="@Model.Telefone" />
+            </div>
+            <div class="col-md-4">
+                <label>Genero</label>
+                <input type="text" class="form-control" readonly value="@Model.Genero" />
+            </div>
+            <div class="col-md-2">
+                <label>Data de Nascimento</label>
+                <input type="text" class="form-control" readonly value="@Model.DataNascimento.ToString("dd/MM/yyyy")" />
+            </div>
+        </div>
+
+    </div>
+</div>
 

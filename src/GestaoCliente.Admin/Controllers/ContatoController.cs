@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GestaoCliente.Domain;
+using GestaoCliente.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,30 +10,58 @@ namespace GestaoCliente.Admin.Controllers
 {
     public class ContatoController : Controller
     {
-        public IActionResult Listar()
+        private readonly IContatoService _contatoService;
+
+        public ContatoController(IContatoService contatoService)
         {
-            return View();
+            _contatoService = contatoService;
+        }
+        
+        [Route("listar")]
+        public IActionResult Listar(string telefone = null, string email = null)
+        {
+            IEnumerable<ContatoModel> contatos = _contatoService.Listar(new Domain.ContatoModel
+            {
+                Telefone = telefone,
+                Email = email
+            });
+            return View(contatos);
         }
 
 
-        public IActionResult Detalhe()
+        [Route("detalhe")]
+        public IActionResult Detalhe(int id)
         {
-            return View();
+            ContatoModel contato = _contatoService.Obter(new ContatoModel { Id = id });
+            return View(contato);
         }
 
+        [Route("criar")]
         public IActionResult Criar()
         {
             return View();
         }
-
-        public IActionResult Atualizar()
+        
+        [Route("atualizar")]
+        public IActionResult Atualizar(int id)
         {
-            return View();
+            ContatoModel contato = _contatoService.Obter(new ContatoModel { Id = id });
+            return View(contato);
         }
 
-        public IActionResult Delete()
+        [HttpPost, Route("atualizar")]
+        public IActionResult Atualizar(ContatoModel model)
         {
-            return View();
+            _contatoService.Atualizar(model);
+            ContatoModel contato = _contatoService.Obter(new ContatoModel { Id = model.Id });
+            return View(contato);
+        }
+
+        [Route("delete")]
+        public IActionResult Delete(int id)
+        {
+            _contatoService.Equals(id);
+            return RedirectToAction("listar");
         }
     }
 }
