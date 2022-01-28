@@ -1,13 +1,33 @@
-﻿@{
+﻿
+@model ContatoModel
+@{
     ViewData["Title"] = "Criar novo contato";
 }
 
 <div class="card">
     <div class="card-header">
-        <a asp-controller="contato" asp-action="listar" class="btn btn-warning" style="float:right;">Voltar</a>
+        <a asp-controller="cliente" asp-action="listar" class="btn btn-warning" style="float:right;">Voltar</a>
         @ViewData["Title"]
     </div>
     <div class="card-body">
+
+        <form class="" method="post" action="@Url.ActionLink("criar", "contato")">
+            <input type="hidden" id="ClienteId" name="ClienteId" value="@Model.ClienteId" />
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Telefone</label>
+                    <input type="text" class="form-control" name="Telefone" id="Telefone" value="@Model.Telefone" />
+                </div>
+                <div class="col-md-6">
+                    <label>Email</label>
+                    <input type="text" class="form-control" id="Email" name="Email" value="@Model.Email" />
+                </div>
+                <div class="col-md-12 mt-3">
+                    <input type="submit" name="name" value="Salvar" class="btn btn-success" />
+                </div>
+
+            </div>
+        </form>
 
     </div>
 </div>

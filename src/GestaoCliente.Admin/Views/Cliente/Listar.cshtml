@@ -42,6 +42,8 @@
                 {
                     <tr>
                         <td>
+                            <a href="@Url.Content($"/contato/listar?clienteId={item.Id}")" class="btn btn-primary mr-1" style="float:right;">Contatos</a>
+                            <a href="@Url.Content($"/contato/criar?clienteId={item.Id}")" class="btn btn-secondary mr-1" style="float:right;">Adicionar contato</a>
                             <a href="@Url.Content($"/cliente/atualizar?id={item.Id}")" class="btn btn-info mr-1" style="float:right;">Editar</a>
                             <a href="@Url.Content($"/cliente/delete?id={item.Id}")" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
                             <a href="@Url.Content($"/cliente/detalhe?id={item.Id}")" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>

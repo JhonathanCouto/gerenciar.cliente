@@ -39,7 +39,14 @@ namespace GestaoCliente.Admin.Controllers
         [Route("criar")]
         public IActionResult Criar()
         {
-            return View();
+            return View(new ClienteModel());
+        }
+
+        [HttpPost, Route("criar")]
+        public IActionResult Criar(ClienteModel model)
+        {
+            _clienteService.Adicionar(model);
+            return RedirectToAction("listar");
         }
 
         [Route("atualizar")]

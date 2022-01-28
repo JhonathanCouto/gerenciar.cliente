@@ -1,7 +1,58 @@
-﻿
+﻿@inject IHttpContextAccessor httpContextAccessor
+@model IEnumerable<ContatoModel>
+
 @{
-    ViewData["Title"] = "Listar";
+    ViewData["Title"] = "Relatório de contatos";
+    HttpRequest httpRequest = httpContextAccessor.HttpContext.Request;
 }
 
-<h1>Listar</h1>
+<div class="card">
+    <div class="card-header">
+        @*<a asp-controller="contato" asp-action="criar" class="btn btn-primary" style="float:right;">Novo contato</a>*@
+        <a asp-controller="cliente" asp-action="listar" class="btn btn-warning" style="float:right;">Voltar</a>
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+
+        <form class="row g-3" method="get" action="@Url.ActionLink("listar", "contato")">
+            <div class="col-md-12">
+                <h5>Pesquisar contato</h5>
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" id="telefone" name="telefone" value="@httpRequest.Query["telefone"]" placeholder="Digite o telefone do cliente...">
+            </div>
+            <div class="col-auto">
+                <input type="email" class="form-control" id="email" name="email" value="@httpRequest.Query["email"]" placeholder="Digite o e-mail do cliente...">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-secondary mb-3">Pesquisar</button>
+            </div>
+        </form>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Ações</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Content($"/contato/atualizar?id={item.Id}")" class="btn btn-info mr-1" style="float:right;">Editar</a>
+                            <a href="@Url.Content($"/contato/delete?id={item.Id}")" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
+                            <a href="@Url.Content($"/contato/detalhe?id={item.Id}")" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
+                        </td>
+                        <td>@item.Telefone</td>
+                        <td>@item.Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
 

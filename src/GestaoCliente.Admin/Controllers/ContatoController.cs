@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace GestaoCliente.Admin.Controllers
 {
+    [Route("contato")]
     public class ContatoController : Controller
     {
         private readonly IContatoService _contatoService;
@@ -16,12 +17,13 @@ namespace GestaoCliente.Admin.Controllers
         {
             _contatoService = contatoService;
         }
-        
+
         [Route("listar")]
-        public IActionResult Listar(string telefone = null, string email = null)
+        public IActionResult Listar(int clienteId, string telefone = null, string email = null)
         {
             IEnumerable<ContatoModel> contatos = _contatoService.Listar(new Domain.ContatoModel
             {
+                ClienteId = clienteId,
                 Telefone = telefone,
                 Email = email
             });
@@ -37,11 +39,18 @@ namespace GestaoCliente.Admin.Controllers
         }
 
         [Route("criar")]
-        public IActionResult Criar()
+        public IActionResult Criar(int clienteId)
         {
-            return View();
+            return View(new ContatoModel { ClienteId = clienteId });
         }
-        
+
+        [HttpPost, Route("criar")]
+        public IActionResult Criar(ContatoModel model)
+        {
+            _contatoService.Adicionar(model);
+            return RedirectToAction("listar", "cliente");
+        }
+
         [Route("atualizar")]
         public IActionResult Atualizar(int id)
         {
@@ -60,8 +69,8 @@ namespace GestaoCliente.Admin.Controllers
         [Route("delete")]
         public IActionResult Delete(int id)
         {
-            _contatoService.Equals(id);
-            return RedirectToAction("listar");
+            _contatoService.Excluir(id);
+            return RedirectToAction("listar", "cliente");
         }
     }
 }

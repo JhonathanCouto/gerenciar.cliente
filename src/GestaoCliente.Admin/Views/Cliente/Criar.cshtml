@@ -1,4 +1,4 @@
-﻿
+﻿@model ClienteModel
 @{
     ViewData["Title"] = "Criar novo cliente";
 }
@@ -9,6 +9,29 @@
         @ViewData["Title"]
     </div>
     <div class="card-body">
+
+        <form class="" method="post" action="@Url.ActionLink("criar", "cliente")">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" name="Nome" id="Nome" value="@Model.Nome" />
+                </div>
+                <div class="col-md-4">
+                    <label>Genero</label>
+                    <input type="text" class="form-control" id="Genero" name="Genero" value="@Model.Genero" />
+                </div>
+                <div class="col-md-2">
+                    <label>Data de Nascimento</label>
+                    <input type="text" class="form-control" id="DataNascimento" name="DataNascimento" value="@Model.DataNascimento.ToString("dd/MM/yyyy")" />
+                </div>
+                <div class="col-md-12 mt-3">
+                    <input type="submit" name="name" value="Salvar" class="btn btn-success" />
+                </div>
+
+            </div>
+        </form>
+
 
     </div>
 </div>

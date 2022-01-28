@@ -43,12 +43,14 @@ namespace GestaoCliente.Infra.Data
         public void Excluir(int id)
         {
             string sql = @"Delete from Contato where Id = @Id;";
-            base.AdicionarOuAtualizar(sql, new KeyValuePair<string, object>("@Id", id));
+            base.AdicionarOuAtualizar(sql, new Dictionary<string, object> { { "@Id", id } });
         }
 
         public IEnumerable<ContatoModel> Listar(ContatoModel contato)
         {
-            string sql = @"Select * from Contato;";
+            string sql = @"select * from Contato 
+		                        where (ClienteId = @ClienteId) and (@Telefone is null or Telefone like '%' + @Telefone + '%') and 
+		                        (@Email is null or Email like '%' + @Email + '%')";
             return base.Listar<ContatoModel>(sql, contato);
         }
 
