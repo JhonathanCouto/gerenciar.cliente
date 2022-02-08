@@ -28,7 +28,7 @@ namespace GestaoCliente.Admin.Controllers
 
             return View(clientes);
         }
-
+          
         [Route("detalhe")]
         public IActionResult Detalhe(int id)
         {
