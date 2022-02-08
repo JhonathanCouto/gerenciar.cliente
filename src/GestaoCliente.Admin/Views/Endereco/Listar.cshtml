@@ -1,7 +1,83 @@
-﻿
+﻿@inject IHttpContextAccessor httpContextAccessor
+@model IEnumerable<EnderecoModel>
 @{
-    ViewData["Title"] = "Listar";
+    ViewData["Title"] = "Relatório de endereços";
+    HttpRequest httpRequest = httpContextAccessor.HttpContext.Request;
 }
 
-<h1>Listar</h1>
+<div class="card">
+    <div class="card-header">
+        <a asp-controller="cliente" asp-action="listar" class="btn btn-warning" style="float:right;"><i class="fa fa-angle-double-left"></i>&ensp;Voltar</a>
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+        <form class="row g-3" method="get" action="@Url.ActionLink("listar", "endereco")">
+            <div class="col-md-12">
+                <h5>Pesquisar endereço</h5>
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" id="logradouro" name="logradouro" value="@httpRequest.Query["logradouro"]" placeholder="Digite o logradouro do cliente...">
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" id="numero" name="numero" value="@httpRequest.Query["numero"]" placeholder="Digite o numero do cliente...">
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" id="complemento" name="complemento" value="@httpRequest.Query["complemento"]" placeholder="Digite o complemento do cliente...">
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" id="cep" name="cep" value="@httpRequest.Query["cep"]" placeholder="Digite o cep do cliente...">
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" id="estado" name="estado" value="@httpRequest.Query["estado"]" placeholder="Digite o estado do cliente...">
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" id="cidade" name="cidade" value="@httpRequest.Query["cidade"]" placeholder="Digite a cidade do cliente...">
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" id="bairro" name="bairro" value="@httpRequest.Query["bairro"]" placeholder="Digite o bairro do cliente...">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-secondary mb-3"><i class="fa fa-search"></i>&ensp;Pesquisar</button>
+            </div>
+
+        </form>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Ações</th>
+                    <th scope="col">Logradouro</th>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Complemento</th>
+                    <th scope="col">Cep</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Bairro</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        <a href="@Url.Content($"/endereco/atualizar?id={item.Id}")" class="btn btn-info mr-1" style="float:right;">Editar</a>
+                        <a href="@Url.Content($"/endereco/delete?id={item.Id}")" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
+                        <a href="@Url.Content($"/endereco/detalhe?id={item.Id}")" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
+                    </td>
+                    <td>@item.Logradouro</td>
+                    <td>@item.Numero</td>
+                    <td>@item.Complemento</td>
+                    <td>@item.Cep</td>
+                    <td>@item.Estado</td>
+                    <td>@item.Cidade</td>
+                    <td>@item.Bairro</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
 

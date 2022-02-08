@@ -1,0 +1,55 @@
+﻿
+@model EnderecoModel
+@{
+    ViewData["Title"] = "Criar novo endereço";
+}
+
+<div class="card">
+    <div class="card-header">
+        <a asp-controller="cliente" asp-action="listar" class="btn btn-warning" style="float:right;"><i class="fa fa-angle-double-left"></i>&ensp;Voltar</a>
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+
+        <form class="" method="post" action="@Url.ActionLink("criar", "endereco")">
+            <input type="hidden" value="@Model.Id" id="Id" name="Id" />
+            <div class="col-md-1">
+                <label>Logradouro</label>
+                <input type="text" class="form-control" name="Logradouro" id="Logradouro" value="@Model.Logradouro" />
+            </div>
+            <div class="col-md-2">
+                <label>Numero</label>
+                <input type="text" class="form-control" id="Numero" name="Numero" value="@Model.Numero" />
+            </div>
+            <div class="col-md-2">
+                <label>Complemento</label>
+                <input type="text" class="form-control" id="Complemento" name="Complemento" value="@Model.Complemento" />
+            </div>
+            <div class="col-md-2">
+                <label>Cep</label>
+                <input type="text" class="form-control" id="Cep" name="Cep" value="@Model.Cep" />
+            </div>
+            <div class="col-md-2">
+                <label>Estado</label>
+                <input type="text" class="form-control" id="Estado" name="Estado" value="@Model.Estado" />
+            </div>
+            <div class="col-md-2">
+                <label>Cidade</label>
+                <input type="text" class="form-control" id="Cidade" name="Cidade" value="@Model.Cidade" />
+            </div>
+            <div class="col-md-2">
+                <label>Bairro</label>
+                <input type="text" class="form-control" id="Bairro" name="Bairro" value="@Model.Bairro" />
+            </div>
+
+            <div class="col-md-12 mt-3">
+                <button type="submit" name="name" class="btn btn-success"><i class="fa fa-save"></i>&ensp;Salvar</button>
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+
+
+

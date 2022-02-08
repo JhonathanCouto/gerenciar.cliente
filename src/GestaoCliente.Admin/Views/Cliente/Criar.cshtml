@@ -5,7 +5,7 @@
 
 <div class="card">
     <div class="card-header">
-        <a asp-controller="cliente" asp-action="listar" class="btn btn-warning" style="float:right;">Voltar</a>
+        <a asp-controller="cliente" asp-action="listar" class="btn btn-warning" style="float:right;"><i class="fa fa-angle-double-left"></i>&ensp;Voltar</a>
         @ViewData["Title"]
     </div>
     <div class="card-body">
@@ -26,7 +26,7 @@
                     <input type="text" class="form-control" id="DataNascimento" name="DataNascimento" value="@Model.DataNascimento.ToString("dd/MM/yyyy")" />
                 </div>
                 <div class="col-md-12 mt-3">
-                    <input type="submit" name="name" value="Salvar" class="btn btn-success" />
+                    <button type="submit" name="name" class="btn btn-success"><i class="fa fa-save"></i>&ensp;Salvar</button>
                 </div>
 
             </div>

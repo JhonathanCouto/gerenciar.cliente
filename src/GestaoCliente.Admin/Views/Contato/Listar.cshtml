@@ -9,7 +9,7 @@
 <div class="card">
     <div class="card-header">
         @*<a asp-controller="contato" asp-action="criar" class="btn btn-primary" style="float:right;">Novo contato</a>*@
-        <a asp-controller="cliente" asp-action="listar" class="btn btn-warning" style="float:right;">Voltar</a>
+        <a asp-controller="cliente" asp-action="listar" class="btn btn-warning" style="float:right;"><i class="fa fa-angle-double-left"></i>&ensp;Voltar</a>
         @ViewData["Title"]
     </div>
     <div class="card-body">
@@ -25,7 +25,7 @@
                 <input type="email" class="form-control" id="email" name="email" value="@httpRequest.Query["email"]" placeholder="Digite o e-mail do cliente...">
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-secondary mb-3">Pesquisar</button>
+                <button type="submit" class="btn btn-secondary mb-3"><i class="fa fa-search"></i>&ensp;Pesquisar</button>
             </div>
         </form>
         <hr />
@@ -41,10 +41,10 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            <a href="@Url.Content($"/contato/atualizar?id={item.Id}")" class="btn btn-info mr-1" style="float:right;">Editar</a>
-                            <a href="@Url.Content($"/contato/delete?id={item.Id}")" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
-                            <a href="@Url.Content($"/contato/detalhe?id={item.Id}")" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
+                        <td class="text-center">
+                            <a href="@Url.Content($"/contato/atualizar?id={item.Id}")" data-toggle="tooltip" data-placement="top" title=" Editar contato" class="btn btn-outline-info mr-1 btn-sm"><i class="fa fa-user-edit"></i></a>
+                            <a href="@Url.Content($"/contato/detalhe?id={item.Id}")" data-toggle="tooltip" data-placement="top" title=" Visualizar contato" class="btn btn-outline-dark mr-1 btn-sm"><i class="fa fa-list-alt"></i></a>
+                            <a href="@Url.Content($"/contato/delete?id={item.Id}")" data-toggle="tooltip" data-placement="top" title=" Excluir contato" class="btn btn-outline-danger mr-1 btn-sm"><i class="fa fa-times-circle"></i></a>
                         </td>
                         <td>@item.Telefone</td>
                         <td>@item.Email</td>
