@@ -11,7 +11,13 @@ namespace GestaoCliente.API.Controllers
     [ApiController]
     public class BaseAPIController : ControllerBase
     {
-    ///
+        /// <summary>
+        /// teste
+        /// </summary>
+        /// <param name="mensagem"></param>
+        /// <param name="codigo"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         protected object Sucesso(string mensagem, int codigo, object data = null)
         {
             return Ok(new ResultadoModel
