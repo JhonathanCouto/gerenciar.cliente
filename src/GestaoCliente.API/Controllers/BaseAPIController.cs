@@ -11,7 +11,7 @@ namespace GestaoCliente.API.Controllers
     [ApiController]
     public class BaseAPIController : ControllerBase
     {
-    ///
+    ///s
         protected object Sucesso(string mensagem, int codigo, object data = null)
         {
             return Ok(new ResultadoModel
