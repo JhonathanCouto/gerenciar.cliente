@@ -11,42 +11,59 @@
     </div>
     <div class="card-body">
 
+
+
+
+
+
+
+
         <form class="" method="post" action="@Url.ActionLink("criar", "endereco")">
             <input type="hidden" value="@Model.Id" id="Id" name="Id" />
-            <div class="col-md-1">
-                <label>Logradouro</label>
-                <input type="text" class="form-control" name="Logradouro" id="Logradouro" value="@Model.Logradouro" />
-            </div>
-            <div class="col-md-2">
-                <label>Numero</label>
-                <input type="text" class="form-control" id="Numero" name="Numero" value="@Model.Numero" />
-            </div>
-            <div class="col-md-2">
-                <label>Complemento</label>
-                <input type="text" class="form-control" id="Complemento" name="Complemento" value="@Model.Complemento" />
-            </div>
-            <div class="col-md-2">
-                <label>Cep</label>
-                <input type="text" class="form-control" id="Cep" name="Cep" value="@Model.Cep" />
-            </div>
-            <div class="col-md-2">
-                <label>Estado</label>
-                <input type="text" class="form-control" id="Estado" name="Estado" value="@Model.Estado" />
-            </div>
-            <div class="col-md-2">
-                <label>Cidade</label>
-                <input type="text" class="form-control" id="Cidade" name="Cidade" value="@Model.Cidade" />
-            </div>
-            <div class="col-md-2">
-                <label>Bairro</label>
-                <input type="text" class="form-control" id="Bairro" name="Bairro" value="@Model.Bairro" />
-            </div>
+            <input type="hidden" id="ClienteId" name="ClienteId" value="@Model.ClienteId" />
 
-            <div class="col-md-12 mt-3">
-                <button type="submit" name="name" class="btn btn-success"><i class="fa fa-save"></i>&ensp;Salvar</button>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="Logradouro">Logradouro</label>
+                    <input type="text" class="form-control" id="Logradouro" placeholder="Digite seu endereço" name="Logradouro" value="@Model.Logradouro" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Numero">Numero</label>
+                    <input type="text" class="form-control" id="Numero" placeholder="Digite seu numero" name="Numero" value="@Model.Numero" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Complemento">Complemento</label>
+                    <input type="text" class="form-control" id="Complemento" placeholder="Digite complemento" name="Complemento" value="@Model.Complemento" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="Cep">Cep</label>
+                    <input type="text" class="form-control" placeholder="00000-000" id="Cep"  name="Cep" value="@Model.Cep" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="Estado">Estado</label>
+                    <input type="text" class="form-control" id="Estado" placeholder="Digite o Estado" name="Estado" value="@Model.Estado" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Cidade">Cidade</label>
+                    <input type="text" class="form-control" id="Cidade" placeholder="Digite a cidade" name="Cidade" value="@Model.Cidade" />
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="Bairro">Bairro</label>
+                    <input type="text" class="form-control" id="Bairro" placeholder="Digite o bairro" name="Bairro" value="@Model.Bairro" />
+                </div>
+                <div class="col-md-12 mt-3">
+                    <button type="submit" name="name" class="btn btn-success"><i class="fa fa-save"></i>&ensp;Salvar</button>
+                </div>
             </div>
         </form>
-        
+
+
+
+
+
+
+
     </div>
 </div>
 

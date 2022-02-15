@@ -15,15 +15,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <label>Nome</label>
-                    <input type="text" class="form-control" name="Nome" id="Nome" value="@Model.Nome" />
+                    <input type="text" class="form-control" name="Nome" placeholder="Digite o nome..." id="Nome" value="@Model.Nome" />
                 </div>
                 <div class="col-md-4">
                     <label>Genero</label>
-                    <input type="text" class="form-control" id="Genero" name="Genero" value="@Model.Genero" />
+                    <input type="text" class="form-control" id="Genero" placeholder="Digite o genero..." name="Genero" value="@Model.Genero" />
                 </div>
                 <div class="col-md-2">
                     <label>Data de Nascimento</label>
-                    <input type="text" class="form-control" id="DataNascimento" name="DataNascimento" value="@Model.DataNascimento.ToString("dd/MM/yyyy")" />
+                    <input type="text" class="form-control" id="DataNascimento"  name="DataNascimento" value="@Model.DataNascimento.ToString("dd/MM/yyyy")" />
                 </div>
                 <div class="col-md-12 mt-3">
                     <button type="submit" name="name" class="btn btn-success"><i class="fa fa-save"></i>&ensp;Salvar</button>

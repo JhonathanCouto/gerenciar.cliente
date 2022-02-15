@@ -11,34 +11,38 @@
         @ViewData["Title"]
     </div>
     <div class="card-body">
+        
         <form class="row g-3" method="get" action="@Url.ActionLink("listar", "endereco")">
-            <div class="col-md-12">
-                <h5>Pesquisar endereço</h5>
-            </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" id="logradouro" name="logradouro" value="@httpRequest.Query["logradouro"]" placeholder="Digite o logradouro do cliente...">
-            </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" id="numero" name="numero" value="@httpRequest.Query["numero"]" placeholder="Digite o numero do cliente...">
-            </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" id="complemento" name="complemento" value="@httpRequest.Query["complemento"]" placeholder="Digite o complemento do cliente...">
-            </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" id="cep" name="cep" value="@httpRequest.Query["cep"]" placeholder="Digite o cep do cliente...">
-            </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" id="estado" name="estado" value="@httpRequest.Query["estado"]" placeholder="Digite o estado do cliente...">
-            </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" id="cidade" name="cidade" value="@httpRequest.Query["cidade"]" placeholder="Digite a cidade do cliente...">
-            </div>
-            <div class="col-auto">
-                <input type="text" class="form-control" id="bairro" name="bairro" value="@httpRequest.Query["bairro"]" placeholder="Digite o bairro do cliente...">
-            </div>
-            <div class="col-auto">
-                <button type="submit" class="btn btn-secondary mb-3"><i class="fa fa-search"></i>&ensp;Pesquisar</button>
-            </div>
+            
+                <div class="col-md-12">
+                    <h5>Pesquisar endereço</h5>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="Logradouro" placeholder="Digite seu endereço" name="Logradouro" value="@httpRequest.Query["Logradouro"]" />
+                </div>
+                <div class="form-group col-md-3">
+                    <input type="text" class="form-control" id="Numero" placeholder="Digite seu numero" name="Numero" value="@httpRequest.Query["Numero"]" />
+                </div>
+                <div class="form-group col-md-3">
+                    <input type="text" class="form-control" id="Complemento" placeholder="Digite complemento" name="Complemento" value="@httpRequest.Query["Complemento"]" />
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="text" class="form-control" placeholder="00000-000" id="Cep" name="Cep" value="@httpRequest.Query["Cep"]" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="Estado" placeholder="Digite o Estado" name="Estado" value="@httpRequest.Query["Estado"]" />
+                </div>
+                <div class="form-group col-md-3">
+                    <input type="text" class="form-control" id="Cidade" placeholder="Digite a cidade" name="Cidade" value="@httpRequest.Query["Cidade"]" />
+                </div>
+                <div class="form-group col-md-5">
+                    <input type="text" class="form-control" id="Bairro" placeholder="Digite o bairro" name="Bairro" value="@httpRequest.Query["Bairro"]" />
+                </div>
+                <div class="col-md-12 mt-3">
+                    <button type="submit" class="btn btn-secondary mb-3"><i class="fa fa-search"></i>&ensp;Pesquisar</button>
+                </div>        
+
 
         </form>
         <hr />
@@ -59,10 +63,10 @@
                 @foreach (var item in Model)
                 {
                 <tr>
-                    <td>
-                        <a href="@Url.Content($"/endereco/atualizar?id={item.Id}")" class="btn btn-info mr-1" style="float:right;">Editar</a>
-                        <a href="@Url.Content($"/endereco/delete?id={item.Id}")" class="btn btn-danger mr-1" style="float:right;">Excluir</a>
-                        <a href="@Url.Content($"/endereco/detalhe?id={item.Id}")" class="btn btn-dark mr-1" style="float:right;">Detalhe</a>
+                    <td class="text-center">
+                        <a href="@Url.Content($"/endereco/atualizar?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Editar endereço" class="btn btn-outline-info mr-1 btn-sm"><i class="fa fa-user-edit"></i></a>
+                        <a href="@Url.Content($"/endereco/delete?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Visualizar endereço" class="btn btn-outline-dark mr-1 btn-sm"><i class="fa fa-list-alt"></i></a>
+                        <a href="@Url.Content($"/endereco/detalhe?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Excluir endereço" class="btn btn-outline-danger mr-1 btn-sm"><i class="fa fa-times-circle"></i></a>
                     </td>
                     <td>@item.Logradouro</td>
                     <td>@item.Numero</td>
