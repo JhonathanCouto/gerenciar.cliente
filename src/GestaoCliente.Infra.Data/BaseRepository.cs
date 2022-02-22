@@ -14,7 +14,8 @@ namespace GestaoCliente.Infra.Data
     /// </summary>
     public abstract class BaseRepository 
     {
-        private const string stringSQL = "Data Source=.\\SQLEXPRESS;Initial Catalog=DbGestaoCliente;Integrated Security=True;";
+        //private const string stringSQL = "Data Source=.\\SQLEXPRESS;Initial Catalog=DbGestaoCliente;Integrated Security=True;";
+        private const string stringSQL = "Data Source=sql5097.site4now.net;Initial Catalog=db_a82f91_aulanet;Persist Security Info=True;User ID=db_a82f91_aulanet_admin;Password=aulane10@;MultipleActiveResultSets=True;Connection Timeout=0;";
 
         private IDbConnection dbConnection => new SqlConnection(stringSQL);
 

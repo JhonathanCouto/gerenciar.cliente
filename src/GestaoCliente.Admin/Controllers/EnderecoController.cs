@@ -49,12 +49,12 @@ namespace GestaoCliente.Admin.Controllers
         {
             return View(new EnderecoModel { ClienteId = clienteId });
         }
-        
+
         [HttpPost, Route("criar")]
         public IActionResult Criar(EnderecoModel model)
         {
             _enderecoService.Adicionar(model);
-            return RedirectToAction("listar", "cliente");
+            return RedirectToAction("listar", "endereco", new { clienteId = model.ClienteId });
         }
 
         [Route("atualizar")]
@@ -73,10 +73,10 @@ namespace GestaoCliente.Admin.Controllers
         }
 
         [Route("delete")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id, int clientId)
         {
             _enderecoService.Excluir(id);
-            return RedirectToAction("listar", "cliente");
+            return RedirectToAction("listar", "endereco", new { clienteId = clientId });
         }
     }
 }

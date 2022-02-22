@@ -20,7 +20,12 @@
                 </div>
                 <div class="col-md-4">
                     <label>Genero</label>
-                    <input type="text" class="form-control" id="Genero" name="Genero" value="@Model.Genero" />
+                    <select class="form-control" name="Genero" id="Genero" asp-for="@Model.Genero">
+                        <option value="">Selecione</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="não informado">Não informado</option>
+                    </select>
                 </div>
                 <div class="col-md-2">
                     <label>Data de Nascimento</label>

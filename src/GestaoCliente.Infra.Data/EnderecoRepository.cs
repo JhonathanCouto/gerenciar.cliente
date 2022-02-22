@@ -64,7 +64,7 @@ namespace GestaoCliente.Infra.Data
         public void Excluir(int id)
         {
             string sql = @"Delete from Endereco where Id = @Id;";
-            base.AdicionarOuAtualizar(sql, new KeyValuePair<string, object>("@Id", id));
+            base.AdicionarOuAtualizar(sql, new Dictionary<string, object> { { "@Id", id } });
         }
 
         public IEnumerable<EnderecoModel> Listar(EnderecoModel endereco)

@@ -28,32 +28,58 @@
             </div>
         </form>
         <hr />
-        <table class="table table-striped">
+        <table class="table table-sm table-striped table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Ações</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Data de nascimento</th>
-                    <th scope="col">Gênero</th>
+                    <th scope="col" class="text-center">Ações</th>
+                    <th scope="col" class="text-center">Nome</th>
+                    <th scope="col" class="text-center">Data de nascimento</th>
+                    <th scope="col" class="text-center">Gênero</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td class="text-center">
+                        <td class="text-center" style="min-width: 305px; ">
                             <a href="@Url.Content($"/cliente/atualizar?id={item.Id}")" data-toggle="tooltip" data-placement="top" title=" Editar cliente" class="btn btn-outline-info mr-1 btn-sm"><i class="fa fa-user-edit"></i></a>
                             <a href="@Url.Content($"/cliente/detalhe?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Visualizar detalhes do cliente" class="btn btn-outline-dark mr-1 btn-sm"><i class="fa fa-list-alt"></i></a>
-                            <a href="@Url.Content($"/cliente/delete?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Excluir cliente" class="btn btn-outline-danger mr-1 btn-sm"><i class="fa fa-times-circle"></i></a>
+                            <a href="@Url.Content($"/cliente/delete?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Excluir cliente" class="btn btn-outline-danger d-none mr-1 btn-sm"><i class="fa fa-times-circle"></i></a>
 
                             <a href="@Url.Content($"/contato/criar?clienteId={item.Id}")" data-toggle="tooltip" data-placement="top" title="Adicionar contato" class="btn btn-primary mr-1 btn-sm"><i class="fa fa-address-book"></i></a>
                             <a href="@Url.Content($"/contato/listar?clienteId={item.Id}")" data-toggle="tooltip" data-placement="top" title="Visualizar contatos" class="btn btn-outline-dark mr-1 btn-sm"><i class="fa fa-id-badge"></i></a>
                             <a href="@Url.Content($"/endereco/criar?clienteId={item.Id}")" data-toggle="tooltip" data-placement="top" title="Adicionar endereço" class="btn btn-primary mr-1 btn-sm"><i class="fa fa-address-card"></i></a>
                             <a href="@Url.Content($"/endereco/listar?clienteId={item.Id}")" data-toggle="tooltip" data-placement="top" title="Visualizar endereços" class="btn btn-outline-dark mr-1 btn-sm"><i class="fa fa-map-marker-alt"></i></a>
                         </td>
-                        <td>@item.Nome</td>
-                        <td>@item.DataNascimento.ToString("dd/MM/yyyy")</td>
-                        <td>@item.Genero</td>
+                        <td class="text-left">@item.Nome</td>
+                        <td class="text-center">
+                            @{
+                                if (item.DataNascimento.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy"))
+                                {
+                                    <span class="badge badge-success">@item.DataNascimento.ToString("dd/MM/yyyy")</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-secondary">@item.DataNascimento.ToString("dd/MM/yyyy")</span>
+                                }
+                            }
+                        </td>
+                        <td class="text-center">
+                            @{
+                                if (item.Genero?.ToLower() == "masculino")
+                                {
+                                    <span class="badge badge-info">@item.Genero?.ToUpper()</span>
+                                }
+                                else if (item.Genero?.ToLower() == "feminino")
+                                {
+                                    <span class="badge badge-danger">@item.Genero?.ToUpper()</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-secondary">@item.Genero?.ToUpper()</span>
+                                }
+                            }
+                        </td>
                     </tr>
                 }
             </tbody>

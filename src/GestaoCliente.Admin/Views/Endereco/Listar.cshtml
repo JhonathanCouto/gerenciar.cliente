@@ -11,37 +11,37 @@
         @ViewData["Title"]
     </div>
     <div class="card-body">
-        
-        <form class="row g-3" method="get" action="@Url.ActionLink("listar", "endereco")">
-            
-                <div class="col-md-12">
-                    <h5>Pesquisar endereço</h5>
-                </div>
 
-                <div class="form-group col-md-4">
-                    <input type="text" class="form-control" id="Logradouro" placeholder="Digite seu endereço" name="Logradouro" value="@httpRequest.Query["Logradouro"]" />
-                </div>
-                <div class="form-group col-md-3">
-                    <input type="text" class="form-control" id="Numero" placeholder="Digite seu numero" name="Numero" value="@httpRequest.Query["Numero"]" />
-                </div>
-                <div class="form-group col-md-3">
-                    <input type="text" class="form-control" id="Complemento" placeholder="Digite complemento" name="Complemento" value="@httpRequest.Query["Complemento"]" />
-                </div>
-                <div class="form-group col-md-2">
-                    <input type="text" class="form-control" placeholder="00000-000" id="Cep" name="Cep" value="@httpRequest.Query["Cep"]" />
-                </div>
-                <div class="form-group col-md-4">
-                    <input type="text" class="form-control" id="Estado" placeholder="Digite o Estado" name="Estado" value="@httpRequest.Query["Estado"]" />
-                </div>
-                <div class="form-group col-md-3">
-                    <input type="text" class="form-control" id="Cidade" placeholder="Digite a cidade" name="Cidade" value="@httpRequest.Query["Cidade"]" />
-                </div>
-                <div class="form-group col-md-5">
-                    <input type="text" class="form-control" id="Bairro" placeholder="Digite o bairro" name="Bairro" value="@httpRequest.Query["Bairro"]" />
-                </div>
-                <div class="col-md-12 mt-3">
-                    <button type="submit" class="btn btn-secondary mb-3"><i class="fa fa-search"></i>&ensp;Pesquisar</button>
-                </div>        
+        <form class="row g-3" method="get" action="@Url.ActionLink("listar", "endereco")">
+
+            <div class="col-md-12">
+                <h5>Pesquisar endereço</h5>
+            </div>
+
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" id="Logradouro" placeholder="Digite seu endereço" name="Logradouro" value="@httpRequest.Query["Logradouro"]" />
+            </div>
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" id="Numero" placeholder="Digite seu numero" name="Numero" value="@httpRequest.Query["Numero"]" />
+            </div>
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" id="Complemento" placeholder="Digite complemento" name="Complemento" value="@httpRequest.Query["Complemento"]" />
+            </div>
+            <div class="form-group col-md-2">
+                <input type="text" class="form-control" placeholder="00000-000" id="Cep" name="Cep" value="@httpRequest.Query["Cep"]" />
+            </div>
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" id="Estado" placeholder="Digite o Estado" name="Estado" value="@httpRequest.Query["Estado"]" />
+            </div>
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" id="Cidade" placeholder="Digite a cidade" name="Cidade" value="@httpRequest.Query["Cidade"]" />
+            </div>
+            <div class="form-group col-md-5">
+                <input type="text" class="form-control" id="Bairro" placeholder="Digite o bairro" name="Bairro" value="@httpRequest.Query["Bairro"]" />
+            </div>
+            <div class="col-md-12 mt-3">
+                <button type="submit" class="btn btn-secondary mb-3"><i class="fa fa-search"></i>&ensp;Pesquisar</button>
+            </div>
 
 
         </form>
@@ -62,20 +62,20 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td class="text-center">
-                        <a href="@Url.Content($"/endereco/atualizar?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Editar endereço" class="btn btn-outline-info mr-1 btn-sm"><i class="fa fa-user-edit"></i></a>
-                        <a href="@Url.Content($"/endereco/delete?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Visualizar endereço" class="btn btn-outline-dark mr-1 btn-sm"><i class="fa fa-list-alt"></i></a>
-                        <a href="@Url.Content($"/endereco/detalhe?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Excluir endereço" class="btn btn-outline-danger mr-1 btn-sm"><i class="fa fa-times-circle"></i></a>
-                    </td>
-                    <td>@item.Logradouro</td>
-                    <td>@item.Numero</td>
-                    <td>@item.Complemento</td>
-                    <td>@item.Cep</td>
-                    <td>@item.Estado</td>
-                    <td>@item.Cidade</td>
-                    <td>@item.Bairro</td>
-                </tr>
+                    <tr>
+                        <td class="text-center">
+                            <a href="@Url.Content($"/endereco/atualizar?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Editar endereço" class="btn btn-outline-info mr-1 btn-sm"><i class="fa fa-user-edit"></i></a>
+                            <a href="@Url.Content($"/endereco/detalhe?id={item.Id}")" data-toggle="tooltip" data-placement="top" title="Visualizar endereço" class="btn btn-outline-dark mr-1 btn-sm"><i class="fa fa-list-alt"></i></a>
+                            <a href="@Url.Content($"/endereco/delete?id={item.Id}&clientId={item.ClienteId}")" data-toggle="tooltip" data-placement="top" title="Excluir endereço" class="btn btn-outline-danger mr-1 btn-sm"><i class="fa fa-times-circle"></i></a>
+                        </td>
+                        <td>@item.Logradouro</td>
+                        <td>@item.Numero</td>
+                        <td>@item.Complemento</td>
+                        <td>@item.Cep</td>
+                        <td>@item.Estado</td>
+                        <td>@item.Cidade</td>
+                        <td>@item.Bairro</td>
+                    </tr>
                 }
             </tbody>
         </table>
